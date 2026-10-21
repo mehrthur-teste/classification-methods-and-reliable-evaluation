@@ -17,7 +17,7 @@ def main():
     )
     args = parser.parse_args()
     if not args.model.is_file():
-        parser.error("Model file not found. Run the notebook's final training cell first.")
+        parser.error("Model file not found. Run the notebook's training cells and then its final save cell.")
 
     # Load only the trusted model file created by this project.
     bundle = joblib.load(args.model)
@@ -25,7 +25,7 @@ def main():
         parser.error(
             f"Model requires scikit-learn {bundle['sklearn_version']}; "
             f"installed version is {sklearn.__version__}. "
-            "Recreate the model with the notebook's final cell in this environment."
+            "Rerun the notebook's training cells and final save cell in this environment."
         )
 
     # Recreate the test split and select one case that was not used for training.
