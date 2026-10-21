@@ -64,3 +64,13 @@ sns.set_theme(style="whitegrid")
 Configures the chart theme using seaborn, imported as `sns`. The `whitegrid` style uses a white background with grid lines, making values easier to read and compare.
 
 This line changes the appearance of charts. It does not affect the data, model training, or predictions.
+
+## Save and reuse the selected model
+
+1. Install the dependencies: `python -m pip install -r requirements.txt`.
+2. Run the notebook's final **Train and save the selected model** cell from the project folder. It trains on the original training split and saves `models/logistic_regression.joblib`.
+3. Run `python predict_example.py` to load the saved pipeline and classify one held-out example without retraining. The script also works from another directory because its default model path is relative to the script.
+
+The saved bundle includes preprocessing, the 30 feature names, class labels, the scikit-learn version, and threshold **0.30**. The example uses the threshold explicitly rather than the default `predict()` threshold of 0.50. Recreate the model using the final notebook cell if your scikit-learn version differs from the saved version. Only load trusted joblib files.
+
+The threshold is an exploratory choice from this assignment, rather than an independently validated result.
